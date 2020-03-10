@@ -31,5 +31,13 @@ app.use(requestLogger);
 app.use('/public', express.static(path.join(__dirname, 'public')))
 app.use('/api', require('./api'))
 
+// default route
+app.all('/', (req, res, next) => {
+    next();
+})
+
+// connect main
+app.use('/main', require('./main'))
+
 // Start Server
 server.listen(port);
