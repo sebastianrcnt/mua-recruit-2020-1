@@ -33,7 +33,7 @@ app.use('/api', require('./api'))
 
 // default route
 app.all('/', (req, res, next) => {
-    next();
+    res.redirect('/main')
 })
 
 // connect main
