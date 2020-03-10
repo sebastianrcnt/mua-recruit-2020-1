@@ -1,0 +1,18 @@
+{
+  "applications": [
+    {
+      "name": "shiwon",
+      "password": "sean1234",
+      "email": "sebastianrcnt@gmail.com",
+      "_id": "bkPgvQud",
+      "_pw": "525128cd0ca3c44880ebe4353c3c5c03f49d6b79309b8296232c7d73e87c59cc"
+    },
+    {
+      "name": "shiwon",
+      "password": "sean1234",
+      "email": "sebastianrc3nt@gmail.com",
+      "_id": "X-11XHog",
+      "_pw": "8382d044fd75e0054a3f36e6084ff87056f3f64d996e9fa1887db7c3c5224df0"
+    }
+  ]
+}
