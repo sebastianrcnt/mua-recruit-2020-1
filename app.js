@@ -21,12 +21,12 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, '/views'))
 
 // App Start
+// Parse
 app.use(cookieParser('130226'));
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
 
-// apps
-
+// Routing
 app.use(requestLogger);
 app.use('/public', express.static(path.join(__dirname, 'public')))
 app.use('/api', require('./api'))
