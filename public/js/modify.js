@@ -9,21 +9,20 @@ $(document).ready(function () {
   $.ajax({
     url: `/api/applications?id=${id}&password=${password}`,
     method: 'GET'
-  }).done(function(response) {
+  }).done(function (response) {
     render(response)
-  }).fail(function(response) {
+  }).fail(function (response) {
     alert(response.responseText)
   })
 
-  $('#goto-main').on('click', function() {
+  $('#goto-main').on('click', function () {
     window.location.replace('/recruit/main')
   })
 
-  $('#password').focus(function() {
-    console.log('event!')
+  $('#password').focus(function () {
     $('#password').attr('type', 'text')
   })
-  $('#password').focusout(function() {
+  $('#password').focusout(function () {
     $('#password').attr('type', 'password')
   })
 
@@ -49,26 +48,25 @@ $(document).ready(function () {
   })
 
   // 요청 보내고 처리하기
-  $('#save-application').on('click', function() {
+  $('#save-application').on('click', function () {
     // validation
     var request = parse();
     if (!(request.email && request.password && request.name && request.major && request.phone && request.field && request.introduction && request.avtime)) {
       alert('항목을 빠짐없이 작성해주세요!')
       return;
     }
-
     $.ajax({
-      url: "http://localhost:2020/api/applications/",
+      url: "/api/applications/",
       data: request,
       method: 'PUT'
     })
-    .done(function(response) {
-      alert('성공적으로 등록되었습니다')
-      window.location.replace(`/recruit/modify?id=${request._id}&password=${request.password}`);
-    })
-    .fail(function(xhr) {
-      alert('실패했습니다. ' + xhr.responseText)
-    })
+      .done(function (response) {
+        alert('성공적으로 등록되었습니다')
+        window.location.replace(`/recruit/modify?id=${request._id}&password=${request.password}`);
+      })
+      .fail(function (xhr) {
+        alert(xhr.responseText)
+      })
   })
 
 })
@@ -88,19 +86,18 @@ function render(data) {
     $(`#${fields}`).toggleClass('field-active');
   }
 
-  if($('#videoteam').hasClass('field-active')) {
+  if ($('#videoteam').hasClass('field-active')) {
     $('.form-group.video-team').show();
   } else {
     $('.form-group.video-team').hide();
   }
 
   $('#introduction').val(data.introduction)
-  if(data.videolink) {
+  if (data.videolink) {
     $('#videolink').val(data.videolink)
   }
 
   var avtimes = data['avtime[]'];
-  console.log('avtimes: ', avtimes)
   if (Array.isArray(avtimes)) {
     data['avtime[]'].forEach(element => {
       $(`.avtime[data-time=${element}]`).click();
@@ -122,19 +119,19 @@ function parse() {
   data.phone = $('#phone').val();
 
   data.field = []
-  if($('#vocal').hasClass('field-active')) {
+  if ($('#vocal').hasClass('field-active')) {
     data.field.push('vocal')
   }
-  if($('#guitar').hasClass('field-active')) {
+  if ($('#guitar').hasClass('field-active')) {
     data.field.push('guitar')
   }
-  if($('#keyboard').hasClass('field-active')) {
+  if ($('#keyboard').hasClass('field-active')) {
     data.field.push('keyboard')
   }
-  if($('#percussion').hasClass('field-active')) {
+  if ($('#percussion').hasClass('field-active')) {
     data.field.push('percussion')
   }
-  if($('#videoteam').hasClass('field-active')) {
+  if ($('#videoteam').hasClass('field-active')) {
     data.field.push('videoteam')
   }
 
@@ -144,7 +141,7 @@ function parse() {
   data.avtime = [];
   var avtimeElements = document.querySelectorAll('.avtime:not(.avtime-not)')
 
-  avtimeElements.forEach(function(element) {
+  avtimeElements.forEach(function (element) {
     var time = element.getAttribute('data-time');
     data.avtime.push(time);
   })

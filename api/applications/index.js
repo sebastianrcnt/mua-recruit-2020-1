@@ -6,7 +6,7 @@ var shortid = require('shortid')
 
 // get all
 router.get('/secret', (req, res) => {
-    if (req.query.secretkey == 'mua130226') {
+    if (req.query.secret == 'mua130226') {
         res.send(database.get('applications').value());
         return;
     } else {
@@ -96,7 +96,6 @@ router.post('/', (req, res) => { // body:json(parsed/raw) -> success(id), failur
 
 router.put('/', (req, res) => { // body: json
     var newApplication = req.body;
-    console.log(newApplication)
     var id = newApplication._id;
     var email = newApplication.email;
     var password = newApplication.password;

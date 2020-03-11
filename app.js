@@ -20,14 +20,22 @@ var requestLogger = reqlib('util/request-logger.js')
 // Parse
 app.set('view engine', 'ejs')
 app.set('views', path.join(__dirname, 'views'))
+// app.use(cors)
+
 app.use(function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    next();
-  });
-  
+  res.header('Access-Control-Allow-Origin', 'http://sebastianrcnt.iptime.org, http://buskingmua.com/');
+  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,PATCH,OPTIONS');
+  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Requested-With');
+  // allow preflight
+  if (req.method === 'OPTIONS') {
+      res.send(200);
+  } else {
+      next();
+  }
+});
+
 app.use(cookieParser('130226'));
-app.use(bodyParser.urlencoded({extended:false}));
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 // Routing
@@ -38,7 +46,7 @@ app.use('/api', require('./api'))
 // connect main
 app.use('/recruit', require('./recruit'))
 app.use('/', (req, res) => {
-    res.redirect('/recruit/main')
+  res.redirect('/recruit/main')
 })
 
 // Start Server

@@ -37,15 +37,16 @@ $(document).ready(function () {
     }
 
     $.ajax({
-      url: "http://localhost:2020/api/applications/",
+      url: "/api/applications/",
       data: request,
       method: 'POST'
     })
     .done(function(response) {
       alert('성공적으로 등록되었습니다')
+      window.location.replace(`/recruit/modify?id=${request._id}&password=${request.password}`);
     })
     .fail(function(xhr) {
-      alert('실패했습니다. ' + xhr.responseText)
+      alert(xhr.responseText)
     })
 
 
