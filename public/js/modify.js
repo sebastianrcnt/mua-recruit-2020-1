@@ -62,7 +62,7 @@ $(document).ready(function () {
     })
       .done(function (response) {
         alert('성공적으로 등록되었습니다')
-        window.location.replace(`/recruit/modify?id=${request._id}&password=${request.password}`);
+        window.location.replace(`/recruit/main`)
       })
       .fail(function (xhr) {
         alert(xhr.responseText)
