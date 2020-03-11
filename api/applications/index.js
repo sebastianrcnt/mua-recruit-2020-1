@@ -87,6 +87,7 @@ router.post('/', (req, res) => { // body:json(parsed/raw) -> success(id), failur
 
 router.put('/', (req, res) => { // body: json
     var newApplication = req.body;
+    console.log(newApplication)
     var id = newApplication._id;
     var email = newApplication.email;
     var password = newApplication.password;
@@ -105,7 +106,7 @@ router.put('/', (req, res) => { // body: json
     }
 
     // check if email is not used
-    if (Application.exists('email', email)) {
+    if (Application.count('email', email) > 1) {
         res.status(409).send(`application with email ${email} already exists`)
         return;
     }

@@ -11,8 +11,8 @@ function now() {
   var offset = now.getTimezoneOffset();
 
   var year = now.getFullYear();
-  var month = now.getMonth();
-  var day = now.getDay()
+  var month = now.getMonth() + 1;
+  var date = now.getDate()
 
   var hour = now.getHours();
   var minute = now.getMinutes();
@@ -20,7 +20,7 @@ function now() {
   var milliseconds = now.getMilliseconds();
 
   // return `${year}-${month}-${day} GMT${offset/60} ${hour}:${pad(minute,2)}:${pad(second,2)}:${milliseconds}`
-  return `${year}-${month}-${day} ${hour}:${pad(minute,2)}:${pad(second,2)}`
+  return `${year}-${month}-${date} ${pad(hour,2)}:${pad(minute,2)}:${pad(second,2)}`
 
 }
 

@@ -1,0 +1,304 @@
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>무아 리크루팅</title>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+  <!-- Popper JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/all.min.js"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"> -->
+  <!-- <link rel="stylesheet" href="myProjects/webProject/icofont/css/icofont.min.css"> -->
+
+  <link rel="stylesheet" href="/public/css/apply.css">
+
+</head>
+
+<body>
+  <div class="wrapper">
+    <div class="window apply">
+      <div class="title">
+        <h1>무아 리크루팅 지원서</h1>
+      </div>
+      <form>
+        <div class="form-group">
+          <label for="id">ID</label>
+          <input type="text" class="form-control" disabled id="id">
+        </div>
+        <div class="form-group">
+          <label for="email">이메일 주소</label>
+          <small class="text-muted">지원서를 수정하실 때 사용할 이메일입니다</small>
+          <input type="email" class="form-control" id="email" required>
+        </div>
+        <div class="form-group">
+          <label for="password">비밀번호</label>
+          <small class="text-muted">지원서를 수정하실 때 사용할 비밀번호입니다</small>
+          <input type="password" class="form-control" id="password">
+        </div>
+        <div class="form-group">
+          <label for="name">이름</label>
+          <input type="text" class="form-control" id="name" required>
+        </div>
+        <div class="form-group">
+          <label for="major">학과</label>
+          <input type="text" class="form-control" id="major" required>
+        </div>
+        <div class="form-group">
+          <label for="phone">전화번호</label>
+          <small class="text-muted">010-0000-0000 형식으로 입력해주세요</small>
+          <input type="text" class="form-control" id="phone" required>
+        </div>
+        <div class="form-group">
+          <label for="field">지원 분야</label>
+          <small class="text-muted">지원 분야를 모두 선택해주세요!</small>
+          <div class="mua-select">
+            <div class="field-button" id='vocal'>
+              보컬
+            </div>
+            <div class="field-button" id='guitar'>
+              기타
+            </div>
+            <div class="field-button" id='keyboard'>
+              키보드
+            </div>
+            <div class="field-button" id='percussion'>
+              퍼커션
+            </div>
+            <div class="field-button" id='videoteam'>
+              영상
+            </div>
+          </div>
+        </div>
+        <div class="form-group video-team">
+          <label for="videolink">영상 링크</label>
+          <small class="text-muted">영상 링크를 아래에 넣어주세요!</small>
+          <textarea class="form-control" id="videolink"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="introduction">간단한 자기소개 및 지원동기</label>
+          <textarea class="form-control" id="introduction"></textarea>
+        </div>
+        <div class="form-group">
+          오디션 시간 선택하기
+          <small class="text-muted">자신이 불가능한 시간대를 제외해주세요!</small>
+        </div>
+        <div class="table-wrapper">
+          <table class="table time table-borderless">
+            <thead>
+              <th>시간대</th>
+              <th>3/23</th>
+              <th>3/24</th>
+              <th>3/25</th>
+              <th>3/28</th>
+            </thead>
+            <tbody>
+              <tr>
+                <td>18:00~18:30</td>
+                <td>
+                  <div class="avtime" data-time='1-1'>
+                    가능
+                  </div>
+                </td>
+                <td>
+                  <div class="avtime" data-time='2-1'>
+                    가능
+                  </div>
+                </td>
+                <td>
+                  <div class="avtime" data-time='3-1'>
+                    가능
+                  </div>
+                </td>
+                <td>
+                  <div class="avtime" data-time='4-1'>
+                    가능
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>18:30~19:00</td>
+                <td>
+                  <div class="avtime" data-time='1-2'>
+                    가능
+                  </div>
+                </td>
+                <td>
+                  <div class="avtime" data-time='2-2'>
+                    가능
+                  </div>
+                </td>
+                <td>
+                  <div class="avtime" data-time='3-2'>
+                    가능
+                  </div>
+                </td>
+                <td>
+                  <div class="avtime" data-time='4-2'>
+                    가능
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>19:00~19:30</td>
+                <td>
+                  <div class="avtime" data-time='1-3'>
+                    가능
+                  </div>
+                </td>
+                <td>
+                  <div class="avtime" data-time='2-3'>
+                    가능
+                  </div>
+                </td>
+                <td>
+                  <div class="avtime" data-time='3-3'>
+                    가능
+                  </div>
+                </td>
+                <td>
+                  <div class="avtime" data-time='4-3'>
+                    가능
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>19:30~20:00</td>
+                <td>
+                  <div class="avtime" data-time='1-4'>
+                    가능
+                  </div>
+                </td>
+                <td>
+                  <div class="avtime" data-time='2-4'>
+                    가능
+                  </div>
+                </td>
+                <td>
+                  <div class="avtime" data-time='3-4'>
+                    가능
+                  </div>
+                </td>
+                <td>
+                  <div class="avtime" data-time='4-4'>
+                    가능
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>20:00~20:30</td>
+                <td>
+                  <div class="avtime" data-time='1-5'>
+                    가능
+                  </div>
+                </td>
+                <td>
+                  <div class="avtime" data-time='2-5'>
+                    가능
+                  </div>
+                </td>
+                <td>
+                  <div class="avtime" data-time='3-5'>
+                    가능
+                  </div>
+                </td>
+                <td>
+                  <div class="avtime" data-time='4-5'>
+                    가능
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>20:30~21:00</td>
+                <td>
+                  <div class="avtime" data-time='1-6'>
+                    가능
+                  </div>
+                </td>
+                <td>
+                  <div class="avtime" data-time='2-6'>
+                    가능
+                  </div>
+                </td>
+                <td>
+                  <div class="avtime" data-time='3-6'>
+                    가능
+                  </div>
+                </td>
+                <td>
+                  <div class="avtime" data-time='4-6'>
+                    가능
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>21:00~21:30</td>
+                <td>
+                  <div class="avtime" data-time='1-7'>
+                    가능
+                  </div>
+                </td>
+                <td>
+                  <div class="avtime" data-time='2-7'>
+                    가능
+                  </div>
+                </td>
+                <td>
+                  <div class="avtime" data-time='3-7'>
+                    가능
+                  </div>
+                </td>
+                <td>
+                  <div class="avtime" data-time='4-7'>
+                    가능
+                  </div>
+                </td>
+              </tr>
+
+              <tr>
+                <td>21:30~22:00</td>
+                <td>
+                  <div class="avtime" data-time='1-8'>
+                    가능
+                  </div>
+                </td>
+                <td>
+                  <div class="avtime" data-time='2-8'>
+                    가능
+                  </div>
+                </td>
+                <td>
+                  <div class="avtime" data-time='3-8'>
+                    가능
+                  </div>
+                </td>
+                <td>
+                  <div class="avtime" data-time='4-8'>
+                    가능
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="actions">
+          <button type="button" id="goto-main">홈으로 돌아가기</button>
+          <button type="button" id="save-application">저장</button>
+          <button type="button" id="cancel-application">취소</button>
+        </div>
+      </form>
+    </div>
+
+  </div>
+</body>
+<script src="/public/js/apply.js"></script>
+
+</html>

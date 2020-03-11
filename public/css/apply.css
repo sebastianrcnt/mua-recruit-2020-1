@@ -58,7 +58,8 @@
 
   input {
     width: 100%;
-    outline: none
+    outline: none;
+    transition: 0.5s;
   }
   
   .actions {
@@ -76,6 +77,10 @@
     -webkit-transition: 0.5s;
     -o-transition: 0.5s;
     transition: 0.5s;
+  }
+
+  .actions button#goto-main {
+    float: left;
   }
 
   .actions button:hover#save-application {

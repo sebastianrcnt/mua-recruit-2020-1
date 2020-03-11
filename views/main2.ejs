@@ -1,0 +1,23 @@
+<html>
+
+<head>
+    <title>로그인</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+</head>
+
+<body>
+    <input type="email">
+    <input type="password">
+    <button type="button" id="modify">지원서 수정하기</button>
+    <button type="button" id="apply">새로운 지원서 작성하기</button>
+</body>
+<script>
+    $(document).ready(function() {
+        $('#apply').on('click', function() {
+            window.location.replace("/recruit/apply");
+        })
+    })
+</script>
+
+</html>

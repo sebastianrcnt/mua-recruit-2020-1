@@ -1,6 +1,10 @@
 $(document).ready(function () {
   // video-team 숨기기
-  $('.form-group.video-team').toggle();
+  $('.form-group.video-team').hide();
+
+  $('#goto-main').on('click', function() {
+    window.location.replace('/recruit/main')
+  })
 
   // 지원 영역 선택하기
   $('.mua-select .field-button').on('click', function () {
