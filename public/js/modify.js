@@ -1,7 +1,5 @@
-var id;
-var password;
-
 $(document).ready(function () {
+  var id, password;
   id = $('#id').attr('value');
   password = $('#password').attr('value')
   var data;
@@ -79,7 +77,7 @@ function render(data) {
 
   var fields = data['field[]'];
   if (Array.isArray(fields)) {
-    fields.foreach(element => {
+    fields.forEach(element => {
       $(`#${element}`).toggleClass('field-active')
     });
   } else {
