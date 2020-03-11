@@ -1,0 +1,144 @@
+
+/* BASIC */
+
+.noShow {
+    display: none;
+  }
+
+  body {
+    background-color: #e2aa35;
+    font-family: "Poppins", sans-serif;
+    height: 100vh;
+  }
+
+  a {
+    color: #e2aa35;
+    display: inline-block;
+    text-decoration: none;
+    font-weight: 400;
+  }
+
+  h1 {
+    font-size: 30px;
+  }
+
+  /* STRUCTURE */
+
+  .wrapper {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    width: 100%;
+    min-height: 100%;
+    padding: 20px 0px;
+  }
+
+  .window {
+    border-radius: 10px;
+    background: #fff;
+    padding: 30px;
+    width: 90%;
+    max-width: 600px;
+    position: relative;
+    -webkit-box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.3);
+            box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.3);
+  }
+
+  .question {
+    margin-top: 25px;
+    line-height: 150%;
+    width: 100%;
+  }
+
+  input {
+    width: 100%;
+    outline: none
+  }
+  
+  .actions {
+    margin-top: 10px;
+  }
+
+  .actions button {
+    float: right;
+    margin-left: 10px;
+    padding: 3px 7px;
+    border-radius: 3px;
+    outline: none;
+    background: white;
+    border: 1px solid grey;
+    -webkit-transition: 0.5s;
+    -o-transition: 0.5s;
+    transition: 0.5s;
+  }
+
+  .actions button:hover#save-application {
+    background: #28a745;
+    color: white;
+    border: 1px solid white;
+  }
+
+  .actions button:hover#cancel-application {
+    background: grey;
+    color: white;
+    border: 1px solid white;
+  }
+
+  .avtime {
+    width: 100%;
+    height: 35px;
+    border: 1px solid #28a745;
+    color: #28a745;
+    border-radius: 7px;
+    -webkit-transition: 0.5s;
+    -o-transition: 0.5s;
+    transition: 0.5s;
+    overflow: hidden;
+  }
+
+  .avtime-not {
+    border: 1px solid grey;
+    background-color: white;
+    color:grey;
+    opacity: 0.2;
+  }
+
+  .mua-select .field-button {
+    display: inline-block;
+    padding: 5px 10px;
+    border: 1px solid grey;
+    color: grey;
+    border-radius: 7px;
+    -webkit-transition: 0.5s;
+    -o-transition: 0.5s;
+    transition: 0.5s;
+  }
+
+  .mua-select .field-button.field-active {
+    background-color: #99ceff;
+    color: white;
+    border: #99ceff;
+  }
+
+  textarea {
+    min-height: 200px;
+  }
+
+  td,
+  th {
+    line-height: 2;
+    padding: 4px !important;
+    text-align: center;
+  }
+
+  .table-wrapper {
+    border: 1px solid #ced4da;
+    border-radius: 10px;
+    overflow-x: scroll;
+  }
