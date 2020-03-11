@@ -38,7 +38,7 @@ app.use('/api', require('./api'))
 // connect main
 app.use('/recruit', require('./recruit'))
 app.use('/', (req, res) => {
-    res.redirect('/applications/main')
+    res.redirect('/recruit/main')
 })
 
 // Start Server
