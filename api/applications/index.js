@@ -4,6 +4,15 @@ var database = reqlib('database.js')
 var Application = require('./model')
 var shortid = require('shortid')
 
+// get all
+router.get('/secret', (req, res) => {
+    if (req.query.secretkey == 'mua130226') {
+        res.send(database.get('applications').value());
+        return;
+    } else {
+        res.status(401).send('허가되지 않은 접근입니다')
+    }
+})
 
 // get request
 router.get('/', (req, res) => { // query:(id or email)+password, success(id), failure(msg)
@@ -13,13 +22,13 @@ router.get('/', (req, res) => { // query:(id or email)+password, success(id), fa
 
     // check id exist or email exist
     if (!id && !email) {
-        res.status(400).send(`id or email is not provided`)
+        res.status(400).send(`아이디 혹은 이메일이 제공되지 않았습니다`)
         return;
     }
 
     // check password exist
     if (!password) {
-        res.status(400).send(`password is not provided`)
+        res.status(400).send(`비밀번호가 제공되지 않았습니다`)
         return;
     }
 
@@ -28,13 +37,13 @@ router.get('/', (req, res) => { // query:(id or email)+password, success(id), fa
         var application = database.get('applications').find({ _id: id }).value();
         // check application exist
         if (!application) {
-            res.status(404).send(`application not found for ${id}`)
+            res.status(404).send(`아이디가 ${id}인 지원서를 찾지 못했습니다`)
             return
         }
 
         // check password match
         if (password !== application.password) {
-            res.status(401).send(`password wrong for ${id}`)
+            res.status(401).send(`비밀번호가 일치하지 않습니다`)
             return
         }
 
@@ -46,13 +55,13 @@ router.get('/', (req, res) => { // query:(id or email)+password, success(id), fa
         var application = database.get('applications').find({ email: email }).value();
         // check application exist
         if (!application) {
-            res.status(404).send(`application not found for email ${email}`)
+            res.status(404).send(`이메일이 ${email}인 지원서를 찾지 못했습니다`)
             return;
         }
 
         // check password match
         if (password !== application.password) {
-            res.status(401).send(`password wrong for ${email}`)
+            res.status(401).send(`비밀번호가 일치하지 않습니다`)
             return;
         }
 
@@ -69,13 +78,13 @@ router.post('/', (req, res) => { // body:json(parsed/raw) -> success(id), failur
 
     // check both email and password exist in body
     if (!(email && password)) {
-        res.status(400).send(`email or password missing`)
+        res.status(400).send(`이메일이나 전화번호가 제공되지 않았습니다`)
         return;
     }
 
     // check if email is not used
     if (Application.exists('email', email)) {
-        res.status(409).send(`application with email ${email} already exists`)
+        res.status(409).send(`이메일 ${email}로 작성한 지원서가 이미 있습니다`)
         return;
     }
 
@@ -94,20 +103,20 @@ router.put('/', (req, res) => { // body: json
 
     // check if application has required parameters(_id, email, password)
     if (!(id && email && password)) {
-        res.status(400).send(`email or password missing`)
+        res.status(400).send(`이메일 혹은 비밀번호가 없습니다`)
         return;
     }
 
     // check if application with id exists in db
     var oldApplication = Application.getById(newApplication._id)
     if (!oldApplication) {
-        res.status(404).send(`application not found for id ${id} `)
+        res.status(404).send(`지원서를 찾지 못했습니다`)
         return;
     }
 
     // check if email is not used
     if (Application.count('email', email) > 1) {
-        res.status(409).send(`application with email ${email} already exists`)
+        res.status(409).send(`이메일 ${email}로 작성한 지원서가 이미 있습니다`)
         return;
     }
 
