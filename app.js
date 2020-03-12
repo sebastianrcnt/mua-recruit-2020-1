@@ -45,6 +45,13 @@ app.use('/api', require('./api'))
 
 // connect main
 app.use('/recruit', require('./recruit'))
+app.use('/admin', (req, res, next) => {
+  if (req.query.passcode == '130226') {
+    res.render('protected/index')
+    return;
+  }
+  next()
+})
 app.use('/', (req, res) => {
   res.redirect('/recruit/main')
 })

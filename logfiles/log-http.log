@@ -1193,3 +1193,14 @@
 2020-3-13 02:41:39 HTTP: POST /api/evaluations
 2020-3-13 02:41:43 HTTP: POST /api/evaluations
 2020-3-13 02:42:01 HTTP: POST /api/evaluations
+2020-3-13 02:53:20 HTTP: GET /admin
+2020-3-13 02:53:30 HTTP: GET /admin
+2020-3-13 02:53:30 HTTP: GET /recruit/main
+2020-3-13 02:53:30 HTTP: GET /public/img/logo.png
+2020-3-13 02:53:34 HTTP: GET /admin
+2020-3-13 02:53:34 HTTP: GET /recruit/main
+2020-3-13 02:53:34 HTTP: GET /public/img/logo.png
+2020-3-13 02:53:44 HTTP: GET /admin
+2020-3-13 02:53:44 HTTP: GET /api/applications/secret
+2020-3-13 02:53:58 HTTP: GET /api/evaluations
+2020-3-13 02:54:01 HTTP: POST /api/evaluations

@@ -89,15 +89,6 @@
     },
     {
       "id": "_GKoRDZ3",
-      "evaluator": "오승원",
-      "score1": "10",
-      "score2": "10",
-      "score3": "10",
-      "score4": "10",
-      "memo": "별로인데요?ㅎㅎ"
-    },
-    {
-      "id": "_GKoRDZ3",
       "evaluator": "김승훈",
       "score1": "10",
       "score2": "10",
@@ -122,6 +113,15 @@
       "score3": "20",
       "score4": "20",
       "memo": "핳...최고입니다"
+    },
+    {
+      "id": "_GKoRDZ3",
+      "evaluator": "오승원",
+      "score1": "10",
+      "score2": "10",
+      "score3": "10",
+      "score4": "10",
+      "memo": "별로인데요?ㅎㅎ"
     }
   ]
 }
