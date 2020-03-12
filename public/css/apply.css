@@ -128,7 +128,7 @@
   .mua-select .field-button.field-active {
     background-color: #99ceff;
     color: white;
-    border: #99ceff;
+    border: #99ceff 1px solid;
   }
 
   textarea {

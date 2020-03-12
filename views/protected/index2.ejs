@@ -1,0 +1,724 @@
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title></title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+
+
+  <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
+
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+    </script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+    </script>
+
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    .container {
+      /* border: 1px solid black; */
+      margin: 30px auto;
+    }
+
+    .dropdown-item .badge {
+      padding: 50px auto;
+    }
+
+    .question {
+      margin-top: 25px;
+      line-height: 150%;
+      width: 100%;
+    }
+
+    input {
+      width: 100%;
+      outline: none;
+      transition: 0.5s;
+    }
+
+    .mua-select .field-button {
+      display: inline-block;
+      padding: 5px 10px;
+      border: 1px solid grey;
+      color: grey;
+      border-radius: 7px;
+      -webkit-transition: 0.5s;
+      -o-transition: 0.5s;
+      transition: 0.5s;
+    }
+
+    .mua-select .field-button.field-active {
+      background-color: #99ceff;
+      color: white;
+      border: #99ceff 1px solid;
+    }
+
+    .avtime {
+      width: 100%;
+      text-align: center;
+      line-height: 2;
+      height: 35px;
+      border: 1px solid #28a745;
+      color: #28a745;
+      border-radius: 7px;
+      -webkit-transition: 0.5s;
+      -o-transition: 0.5s;
+      transition: 0.5s;
+      overflow: hidden;
+    }
+
+    .avtime-not {
+      border: 1px solid grey;
+      background-color: white;
+      color: grey;
+      opacity: 0.2;
+    }
+
+    .table {
+      line-height: 2;
+      text-align: center;
+    }
+
+    .content {
+      padding: 10px 0px;
+    }
+
+    .card {
+      margin: 10px auto;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">무아 리크루팅</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mua-menu-container" data-menu='1'>
+          <li class="nav-item">
+            <a class="nav-link active" data-menu='1'>지원자 목록</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-menu='2'>상세정보</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-menu='3'>평가하기</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              <b>오승원</b>
+            </a>
+            <div class="dropdown-menu mua-user-container" data-user='오승원' aria-labelledby="navbarDropdown">
+              <a class="dropdown-item mua-user active" data-user="오승원">오승원</a>
+              <a class="dropdown-item mua-user" data-user="장영환">장영환</a>
+              <a class="dropdown-item mua-user" data-user="김승훈">김승훈</a>
+              <a class="dropdown-item mua-user" data-user="정시원">정시원</a>
+              <a class="dropdown-item mua-user" data-user="김혜정">김혜정</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">선택하기</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="content mua-tab-container">
+      <div class="mua-tab" data-tab='1'>
+        <table class="table">
+          <thead>
+            <th scope="col">이름</th>
+            <th scope="col">학과</th>
+            <th scope="col">전화번호</th>
+            <th scope="col">Actions</th>
+          </thead>
+          <tbody id='tbody'>
+
+          </tbody>
+        </table>
+      </div>
+      <div class="mua-tab" data-tab='2'>
+        <form>
+          <div class="form-group">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" disabled id="id">
+          </div>
+          <div class="form-group">
+            <label for="email">이메일 주소</label>
+            <input type="email" class="form-control" id="email" disabled>
+          </div>
+          <div class="form-group">
+            <label for="password">비밀번호</label>
+            <input type="password" class="form-control" id="password" disabled>
+          </div>
+          <div class="form-group">
+            <label for="name">이름</label>
+            <input type="text" class="form-control" id="name" disabled>
+          </div>
+          <div class="form-group">
+            <label for="major">학과</label>
+            <input type="text" class="form-control" id="major" disabled>
+          </div>
+          <div class="form-group">
+            <label for="phone">전화번호</label>
+            <input type="text" class="form-control" id="phone" disabled>
+          </div>
+          <div class="form-group">
+            <label for="field">지원 분야</label>
+            <div class="mua-select">
+              <div class="field-button" id='vocal'>
+                보컬
+              </div>
+              <div class="field-button" id='guitar'>
+                기타
+              </div>
+              <div class="field-button" id='keyboard'>
+                키보드
+              </div>
+              <div class="field-button" id='percussion'>
+                퍼커션
+              </div>
+              <div class="field-button" id='videoteam'>
+                영상
+              </div>
+            </div>
+          </div>
+          <div class="form-group video-team">
+            <label for="videolink">영상 링크</label>
+            <textarea class="form-control" id="videolink" disabled></textarea>
+          </div>
+          <div class="form-group">
+            <label for="introduction">간단한 자기소개 및 지원동기</label>
+            <textarea class="form-control" id="introduction" disabled></textarea>
+          </div>
+          <div class="form-group">
+            오디션 시간 선택하기
+          </div>
+          <div class="table-wrapper">
+            <table class="table time table-borderless">
+              <thead>
+                <th>시간대</th>
+                <th>3/23</th>
+                <th>3/24</th>
+                <th>3/25</th>
+                <th>3/28</th>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>18:00~18:30</td>
+                  <td>
+                    <div class="avtime" data-time='1-1'>
+                      가능
+                    </div>
+                  </td>
+                  <td>
+                    <div class="avtime" data-time='2-1'>
+                      가능
+                    </div>
+                  </td>
+                  <td>
+                    <div class="avtime" data-time='3-1'>
+                      가능
+                    </div>
+                  </td>
+                  <td>
+                    <div class="avtime" data-time='4-1'>
+                      가능
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>18:30~19:00</td>
+                  <td>
+                    <div class="avtime" data-time='1-2'>
+                      가능
+                    </div>
+                  </td>
+                  <td>
+                    <div class="avtime" data-time='2-2'>
+                      가능
+                    </div>
+                  </td>
+                  <td>
+                    <div class="avtime" data-time='3-2'>
+                      가능
+                    </div>
+                  </td>
+                  <td>
+                    <div class="avtime" data-time='4-2'>
+                      가능
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>19:00~19:30</td>
+                  <td>
+                    <div class="avtime" data-time='1-3'>
+                      가능
+                    </div>
+                  </td>
+                  <td>
+                    <div class="avtime" data-time='2-3'>
+                      가능
+                    </div>
+                  </td>
+                  <td>
+                    <div class="avtime" data-time='3-3'>
+                      가능
+                    </div>
+                  </td>
+                  <td>
+                    <div class="avtime" data-time='4-3'>
+                      가능
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>19:30~20:00</td>
+                  <td>
+                    <div class="avtime" data-time='1-4'>
+                      가능
+                    </div>
+                  </td>
+                  <td>
+                    <div class="avtime" data-time='2-4'>
+                      가능
+                    </div>
+                  </td>
+                  <td>
+                    <div class="avtime" data-time='3-4'>
+                      가능
+                    </div>
+                  </td>
+                  <td>
+                    <div class="avtime" data-time='4-4'>
+                      가능
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>20:00~20:30</td>
+                  <td>
+                    <div class="avtime" data-time='1-5'>
+                      가능
+                    </div>
+                  </td>
+                  <td>
+                    <div class="avtime" data-time='2-5'>
+                      가능
+                    </div>
+                  </td>
+                  <td>
+                    <div class="avtime" data-time='3-5'>
+                      가능
+                    </div>
+                  </td>
+                  <td>
+                    <div class="avtime" data-time='4-5'>
+                      가능
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>20:30~21:00</td>
+                  <td>
+                    <div class="avtime" data-time='1-6'>
+                      가능
+                    </div>
+                  </td>
+                  <td>
+                    <div class="avtime" data-time='2-6'>
+                      가능
+                    </div>
+                  </td>
+                  <td>
+                    <div class="avtime" data-time='3-6'>
+                      가능
+                    </div>
+                  </td>
+                  <td>
+                    <div class="avtime" data-time='4-6'>
+                      가능
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>21:00~21:30</td>
+                  <td>
+                    <div class="avtime" data-time='1-7'>
+                      가능
+                    </div>
+                  </td>
+                  <td>
+                    <div class="avtime" data-time='2-7'>
+                      가능
+                    </div>
+                  </td>
+                  <td>
+                    <div class="avtime" data-time='3-7'>
+                      가능
+                    </div>
+                  </td>
+                  <td>
+                    <div class="avtime" data-time='4-7'>
+                      가능
+                    </div>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>21:30~22:00</td>
+                  <td>
+                    <div class="avtime" data-time='1-8'>
+                      가능
+                    </div>
+                  </td>
+                  <td>
+                    <div class="avtime" data-time='2-8'>
+                      가능
+                    </div>
+                  </td>
+                  <td>
+                    <div class="avtime" data-time='3-8'>
+                      가능
+                    </div>
+                  </td>
+                  <td>
+                    <div class="avtime" data-time='4-8'>
+                      가능
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </form>
+      </div>
+      <div class="mua-tab" data-tab='3'>
+        <div class="row">
+          <div class="applicant col-md">
+            <div class="card">
+              <div class="card-body">
+                <h5 class='card-title' data-eval-type='name'>이름</h5>
+                <h6 class="card-subtitle mb-2 text-muted" data-eval-type='major'>학과</h6>
+                <h6 class="card-subtitle mb-2 text-muted" data-eval-type='field'>지원분야</h6>
+                <p class='card-text' data-eval-type='introduction'>
+                  자기소개
+                </p>
+                <!-- todo -->
+              </div>
+            </div>
+          </div>
+          <div class="evaluate col-md">
+            <div class="card flex-fill">
+              <div class="card-body">
+                <h5 class="card-title">평가하기</h5>
+                <form class='needs-validation'>
+                  <div class="form-group row">
+                    <label class="col-sm-4 col-form-label">지원자ID</label>
+                    <div class="col-sm-8">
+                      <input type="text" class='form-control-plaintext' name='id' data-eval-type='id'>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-sm-4 col-form-label">평가자</label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control-plaintext evaluator" data-eval-type='evaluator'>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-sm-4 col-form-label">실력</label>
+                    <div class="col-sm-8">
+                      <input type="number" class='form-control' data-eval-type='score1' min='1' max='50'>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-sm-4 col-form-label">성격</label>
+                    <div class="col-sm-8">
+                      <input type="number" class='form-control' data-eval-type='score2' min='1' max='50'>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-sm-4 col-form-label">발전가능성</label>
+                    <div class="col-sm-8">
+                      <input type="number" class='form-control' data-eval-type='score3' min='1' max='50'>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-sm-4 col-form-label">헌신도</label>
+                    <div class="col-sm-8">
+                      <input type="number" class='form-control' data-eval-type='score4' min='1' max='50'>
+                    </div>
+                  </div>
+                  <div class="form-group row" style="padding-left: 15px; padding-right: 15px">
+                    <label class='form-label'>메모</label>
+                    <textarea name="" id="" rows="10" class="form-control" data-eval-type="memo"></textarea>
+                  </div>
+                  <button type="button" class="btn btn-outline-primary float-right"
+                    onclick='saveEvaluation()'>저장하기</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+<script>
+  $(document).ready(documentReady);
+  var data;
+
+  function request() {
+    var ajaxOptions = {
+      url: '/api/applications/secret?secret=mua130226',
+      method: 'GET',
+      dataType: 'json',
+      contentType: false,
+      processData: false,
+    }
+
+    $.ajax(ajaxOptions).done(function (json) {
+      data = json
+      renderTable(json)
+    }).fail((err) => {
+      alert(err.responseText)
+    })
+  }
+
+  function renderTable(data) {
+    document.getElementById('tbody').innerHTML = ''
+    function addRow(row) {
+      document.getElementById('tbody').innerHTML += `
+      <tr data-id='${row._id}' data-password='${row._password}'>
+        <td>${row.name}</td>
+        <td>${row.major}</td>
+        <td>${row.phone}</td>
+        <td>
+          <button type="button mua-info" class="btn btn-outline-info" onclick="renderDetails('${row._id}')">상세정보</button>
+          <button type="button mua-evaluate" class="btn btn-outline-success" onclick="renderEvaluation('${row._id}')">평가하기</button>
+        </td>
+        </tr>
+        `
+    }
+
+    for (const row of data) {
+      addRow(row)
+    }
+  }
+
+  function renderEvaluation(id) { // todo-debug
+    var evaluator = getUser();
+    var fieldMapper = {
+      'vocal': "보컬",
+      'guitar': "기타",
+      'keyboard': "키보드",
+      'percussion': "퍼커션",
+      'videoteam': "영상",
+    }
+
+    var applicant = getById(id)
+    $(`[data-eval-type=name]`).text(applicant.name)
+    $(`[data-eval-type=major]`).text(applicant.major)
+
+    var field = applicant['field[]'];
+    var fields = ''
+    if (Array.isArray(field)) {
+      field.forEach((item) => {
+        fields += `${fieldMapper[item]} `
+      })
+    } else {
+      fields = field;
+    }
+    $(`[data-eval-type=field]`).text(fields)
+    $(`[data-eval-type=introduction]`).text(applicant.introduction)
+    console.log(id)
+    $(`[data-eval-type=id]`).val(id)
+
+    $(`[data-eval-type=evaluator]`).val(evaluator)
+    $.ajax({
+      url: `/api/evaluations?id=${id}&evaluator=${evaluator}`,
+      method: 'GET',
+      contentType: false,
+      processData: false,
+    })
+      .done((response) => {
+        if (response) {
+          $(`[data-eval-type=score1]`).val(response.score1)
+          $(`[data-eval-type=score2]`).val(response.score2)
+          $(`[data-eval-type=score3]`).val(response.score3)
+          $(`[data-eval-type=score4]`).val(response.score4)
+          $(`[data-eval-type=memo]`).val(response.memo)
+        } else {
+          $(`[data-eval-type=id]`).val(id)
+          $(`[data-eval-type=evaluator]`).val(evaluator)
+          $(`[data-eval-type=score1]`).val('')
+          $(`[data-eval-type=score2]`).val('')
+          $(`[data-eval-type=score3]`).val('')
+          $(`[data-eval-type=score4]`).val('')
+          $(`[data-eval-type=memo]`).val('');
+        }
+
+        $('.nav-link[data-menu=3]').click();
+
+      })
+      .fail((err) => {
+        alert(err.responseText);
+      })
+  }
+
+  function saveEvaluation() { // todo-debug
+    var requestData = {};
+    var evaluator = getUser()
+    requestData.id = $(`[data-eval-type=id]`).val();
+    requestData.evaluator = evaluator;
+    requestData.score1 = $(`[data-eval-type=score1]`).val()
+    requestData.score2 = $(`[data-eval-type=score2]`).val()
+    requestData.score3 = $(`[data-eval-type=score3]`).val()
+    requestData.score4 = $(`[data-eval-type=score4]`).val()
+    requestData.memo = $(`[data-eval-type=memo]`).val()
+
+    console.log(requestData)
+
+    $.ajax({
+      url: '/api/evaluations',
+      method: 'POST',
+      data: JSON.stringify(requestData),
+      contentType: "application/json",
+      dataType: 'json',
+    }).done((response) => {
+      alert('성공적으로 저장되었습니다');
+    }).fail((err) => {
+      alert(err.responseText);
+    })
+  }
+
+  function getById(id) {
+    for (const item of data) {
+      if (item._id == id) {
+        return item
+      }
+    }
+    return null;
+  }
+
+  function renderDetails(id) {
+
+    var item = getById(id);
+
+    $('#id').val(item._id)
+    $('#email').val(item.email)
+    $('#name').val(item.name)
+    $('#major').val(item.major)
+    $('#phone').val(item.phone)
+
+    var fields = item['field[]'];
+    if (Array.isArray(fields)) {
+      fields.forEach(element => {
+        $(`#${element}`).toggleClass('field-active')
+      });
+    } else {
+      $(`#${fields}`).toggleClass('field-active');
+    }
+
+    if ($('#videoteam').hasClass('field-active')) {
+      $('.form-group.video-team').show();
+    } else {
+      $('.form-group.video-team').hide();
+    }
+
+    $('#introduction').val(item.introduction)
+    if (item.videolink) {
+      $('#videolink').val(item.videolink)
+    }
+
+    var avtimes = item['avtime[]'];
+    if (Array.isArray(avtimes)) {
+      item['avtime[]'].forEach(element => {
+        $(`.avtime[data-time=${element}]`).toggleClass('avtime-not');
+      })
+    } else {
+      $(`.avtime[data-time=${avtimes}]`).toggleClass('avtime-not')
+    }
+
+    $('.avtime').toggleClass('avtime-not')
+
+    $('.nav-link[data-menu=2]').click();
+  }
+
+
+
+  function getUser() {
+    return $('.mua-user-container').attr('data-user')
+  }
+
+  function setUser(user) { // param(user) : string
+    $('.mua-user-container').attr('data-user', user);
+  }
+
+  function getMenu() {
+    return $('.mua-menu-container').attr('data-menu');
+  }
+
+  function setMenu(menu) {
+    $('.mua-menu-container').attr('data-menu', menu)
+  }
+
+  function documentReady() {
+    // user change
+    $('.mua-user-container .mua-user').on('click', function () {
+      var newUser = $(this).attr('data-user');
+      var oldUser = getUser();
+
+      if (newUser != oldUser) {
+        // toggle active for newuser -> olduser
+        $(this).toggleClass('active');
+        $(`.mua-user[data-user=${oldUser}]`).toggleClass('active');
+
+        // toggle global text
+        $('#navbarDropDown > b').text(newUser)
+        $(`input.evaluator`).val(newUser)
+
+        // set global value
+        setUser($(this).attr('data-user'));
+      }
+    })
+
+    // tab change
+    $(`.mua-tab:not([data-tab=${getMenu()}])`).toggle();
+
+    $('.nav-item:not(.dropdown) .nav-link').on('click', function () {
+      var newMenu = $(this).attr('data-menu');
+      var oldMenu = $('.mua-menu-container').attr('data-menu');
+
+      if (newMenu != oldMenu) {
+        $(this).toggleClass('active');
+        $(`.nav-item:not(.dropdown) .nav-link[data-menu=${oldMenu}]`).toggleClass('active')
+
+        setMenu(newMenu);
+        $(`.mua-tab[data-tab=${oldMenu}]`).toggle();
+        $(`.mua-tab[data-tab=${newMenu}]`).toggle();
+      }
+    })
+
+    request()
+  }
+
+
+</script>
+
+</html>
