@@ -3,6 +3,12 @@ var database = reqlib('database.js')
 var Application = require('../applications/model')
 var shortid = require('shortid')
 
+router.get('/id/', (req, res) => {
+    var paramId = req.query.id;
+    var result = database.get('evaluations').filter({id: paramId}).value();
+
+    res.send(result);
+})
 
 router.get('/', (req, res) => {
     console.log(req.query)
