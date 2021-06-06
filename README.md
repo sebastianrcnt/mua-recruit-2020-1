@@ -7,4 +7,5 @@
 - Node.js + Express
 - EJS Template Engine
 - jQuery AJAX
-- LowDB
+- [lowDB](https://github.com/typicode/lowdb) (JSON Database)
+- [React.js Frontend](https://github.com/sebastianrcnt/mua-audition)
